@@ -1,0 +1,8 @@
+/.idea
+!/.idea/copyright
+/.gradle
+/dist
+build/
+*.log
+
+/src/common/test/sakukimy/DirectLaunch.java

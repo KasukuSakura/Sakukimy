@@ -1,0 +1,27 @@
+/*
+ * Copyright (c) 2021-2022 KasukuSakura & Contributors. All rights reserved.
+ *
+ * Use of this source code is governed by the Apache License 2.0 that can be found through the following link.
+ *
+ * https://github.com/KasukuSakura/Sakukimy/blob/main/LICENSE
+ */
+
+dependencies {
+    api project(':common')
+    implementation 'commons-cli:commons-cli:1.5.0'
+}
+
+jar {
+    manifest.attributes([
+            'Main-Class': 'com.kasukusakura.sakukimy.cli.Sakukimy',
+    ])
+    exclude 'META-INF/versions/9/module-info.class'
+
+    project.configurations.runtimeClasspath.each { file ->
+        if (file.isFile()) {
+            from(zipTree(file))
+        } else {
+            from(file)
+        }
+    }
+}

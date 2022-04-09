@@ -1,0 +1,14 @@
+rootProject.name = 'Sakukimy'
+
+//noinspection GroovyAssignabilityCheck
+def subproject = { name ->
+    //noinspection GroovyAssignabilityCheck
+    include(':' + name)
+    //noinspection GroovyAssignabilityCheck
+    project(':' + name).projectDir = new File(rootProject.projectDir, "src/" + name)
+}
+
+subproject 'common'
+subproject 'executable'
+subproject 'gradle-plugin'
+subproject 'tester'
